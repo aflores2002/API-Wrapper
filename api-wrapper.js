@@ -1,3 +1,5 @@
+// api-wrapper.js
+
 import axios from 'axios';
 
 class CatTrackerAPI {
@@ -86,8 +88,10 @@ class CatTrackerAPI {
 
 const catTrackerAPI = new CatTrackerAPI();
 
-export const getAllTokens = (limit, offset) => catTrackerAPI.getAllTokens(limit, offset);
-export const getTokenMintInfo = (tokenId) => catTrackerAPI.getTokenInfo(tokenId);
-export const getMinterUtxoCount = (tokenId) => catTrackerAPI.getMinterUtxoCount(tokenId);
-
-export default catTrackerAPI;
+module.exports = {
+        CatTrackerAPI,
+        getAllTokens: (limit, offset) => catTrackerAPI.getAllTokens(limit, offset),
+        getTokenMintInfo: (tokenId) => catTrackerAPI.getTokenInfo(tokenId),
+        getMinterUtxoCount: (tokenId) => catTrackerAPI.getMinterUtxoCount(tokenId),
+        default: catTrackerAPI
+};
