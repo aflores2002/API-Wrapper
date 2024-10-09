@@ -1,6 +1,6 @@
 // API-Wrapper/cat-tracker-cache-demo/cache-middleware.js
 
-const redisClient = require("./redis-client");
+import redisClient from "./redis-client.js";
 
 const cacheMiddleware = (duration) => {
   return (req, res, next) => {
@@ -21,4 +21,4 @@ const cacheMiddleware = (duration) => {
   };
 };
 
-module.exports = cacheMiddleware;
+export default cacheMiddleware;

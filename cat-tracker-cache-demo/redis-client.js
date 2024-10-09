@@ -1,15 +1,9 @@
-// API-Wrapper/cat-tracker-cache-demo/redis-client.js
-
-const Redis = require("ioredis");
-
-const redisHost = "redis-11238.c53.west-us.azure.redns.redis-cloud.com";
-const redisPort = "11238";
-const redisPassword = "74n6QggL5iXa7mbOgOKUsWSAXiihagmU";
+import Redis from "ioredis";
 
 const redisClient = new Redis({
-  host: redisHost,
-  port: redisPort,
-  password: redisPassword,
+  host: "redis-11238.c53.west-us.azure.redns.redis-cloud.com",
+  port: "11238",
+  password: "74n6QggL5iXa7mbOgOKUsWSAXiihagmU",
 });
 
-module.exports = redisClient;
+export default redisClient;

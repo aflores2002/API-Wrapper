@@ -4,27 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cat Tracker Cache Demo</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/swr@2.2.5/dist/index.umd.js"></script>
   </head>
   <body>
-    <h1>Cat Tracker Cache Demo</h1>
-    <button onclick="fetchTokens()">Fetch Tokens</button>
-    <div id="result"></div>
+    <div id="root"></div>
 
-    <script>
-      async function fetchTokens() {
-        try {
-          const response = await axios.get("/api/tokens");
-          document.getElementById("result").innerHTML = JSON.stringify(
-            response.data,
-            null,
-            2
-          );
-        } catch (error) {
-          console.error("Error fetching tokens:", error);
-          document.getElementById("result").innerHTML = "Error fetching tokens";
-        }
+    <script type="text/babel">
+      const { useTokens } = window.SWR;
+
+      function App() {
+        const { tokens, isLoading, isError } = useTokens();
+
+        if (isLoading) return <div>Loading...</div>;
+        if (isError) return <div>Error fetching tokens</div>;
+
+        return (
+          <div>
+            <h1>Cat Tracker Cache Demo</h1>
+            <ul>
+              {tokens.map((token) => (
+                <li key={token.tokenId}>
+                  {token.name} ({token.symbol})
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
       }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
     </script>
   </body>
 </html>
