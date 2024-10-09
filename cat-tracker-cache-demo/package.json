@@ -1,0 +1,17 @@
+{
+  "name": "cat-tracker-cache-demo",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "express": "^4.21.1",
+    "ioredis": "^5.4.1"
+  }
+}

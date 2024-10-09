@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cat Tracker Cache Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Cat Tracker Cache Demo</h1>
+    <button onclick="fetchTokens()">Fetch Tokens</button>
+    <div id="result"></div>
+
+    <script>
+      async function fetchTokens() {
+        try {
+          const response = await axios.get("/api/tokens");
+          document.getElementById("result").innerHTML = JSON.stringify(
+            response.data,
+            null,
+            2
+          );
+        } catch (error) {
+          console.error("Error fetching tokens:", error);
+          document.getElementById("result").innerHTML = "Error fetching tokens";
+        }
+      }
+    </script>
+  </body>
+</html>
