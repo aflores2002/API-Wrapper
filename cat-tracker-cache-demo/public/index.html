@@ -3,39 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cat Tracker Cache Demo</title>
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script src="https://unpkg.com/swr@2.2.5/dist/index.umd.js"></script>
+    <title>Cat Tracker Tokens</title>
   </head>
   <body>
-    <div id="root"></div>
-
-    <script type="text/babel">
-      const { useTokens } = window.SWR;
-
-      function App() {
-        const { tokens, isLoading, isError } = useTokens();
-
-        if (isLoading) return <div>Loading...</div>;
-        if (isError) return <div>Error fetching tokens</div>;
-
-        return (
-          <div>
-            <h1>Cat Tracker Cache Demo</h1>
-            <ul>
-              {tokens.map((token) => (
-                <li key={token.tokenId}>
-                  {token.name} ({token.symbol})
-                </li>
-              ))}
-            </ul>
-          </div>
-        );
-      }
-
-      ReactDOM.render(<App />, document.getElementById("root"));
-    </script>
+    <h1>Cat Tracker Tokens</h1>
+    <div id="tokens-list"></div>
+    <script src="/app.js"></script>
   </body>
 </html>
